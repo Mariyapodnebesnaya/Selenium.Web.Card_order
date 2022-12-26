@@ -1,5 +1,6 @@
 package ru.netology.cardOrder;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,13 +12,19 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
 public class CardOrderTest {
     private WebDriver driver;
 
     @BeforeAll
     static void setupAll() {
-        System.setProperty("webdriver.chrome.driver", "./driver/win/chromedriver.exe");
+        WebDriverManager.chromedriver().setup();
     }
+
+// @BeforeAll
+//    static void setupAll() {
+//        System.setProperty("webdriver.chrome.driver", "./driver/win/chromedriver.exe");
+//    }
 
 
     @BeforeEach
