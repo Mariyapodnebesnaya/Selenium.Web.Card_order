@@ -31,6 +31,7 @@ public class CardOrderTest {
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
+        driver.get("http://localhost:9999/");
     }
 
     @AfterEach
@@ -41,7 +42,6 @@ public class CardOrderTest {
 
     @Test
     void formSubmission() {
-        driver.get("http://localhost:9999/");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иван Муравьев-Петров");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79998888888");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
@@ -52,7 +52,6 @@ public class CardOrderTest {
 
     @Test
     void formSubmissionV2() {
-        driver.get("http://localhost:9999");
         List<WebElement> elements = driver.findElements(By.className("input__control"));
         elements.get(0).sendKeys("Иван Муравьев-Петров");
         elements.get(1).sendKeys("+79998888888");
@@ -64,7 +63,6 @@ public class CardOrderTest {
 
     @Test
     void validationCheckLastNameAndFirstNameField() {
-        driver.get("http://localhost:9999/");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Ivan Petrov");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79998888888");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
@@ -75,7 +73,6 @@ public class CardOrderTest {
 
     @Test
     void validationCheckPhone() {
-        driver.get("http://localhost:9999/");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иван Муравьев");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+7999888888");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
@@ -86,7 +83,6 @@ public class CardOrderTest {
 
     @Test
     void emptyFieldPhone() {
-        driver.get("http://localhost:9999/");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иван Муравьев");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
@@ -97,7 +93,6 @@ public class CardOrderTest {
 
     @Test
     void emptyFieldFirstNameLastName() {
-        driver.get("http://localhost:9999/");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79998888888");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
@@ -108,7 +103,6 @@ public class CardOrderTest {
 
     @Test
     void noCheckbox() {
-        driver.get("http://localhost:9999/");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иван Муравьев-Петров");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79998888888");
         driver.findElement(By.cssSelector("[data-test-id=agreement]"));
@@ -119,7 +113,6 @@ public class CardOrderTest {
 
     @Test
     void submittingAnEmptyForm() {
-        driver.get("http://localhost:9999/");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("");
         driver.findElement(By.cssSelector("[data-test-id=agreement]"));
